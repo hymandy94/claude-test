@@ -35,18 +35,18 @@ def midpoint(a: Point, b: Point) -> Point:
 
 
 def translate_point(p: Point, dx: float, dy: float) -> Point:
-    """Return a new point translated by (*dx*, *dy*).
+    """返回沿 (*dx*, *dy*) 平移后的新点。
 
-    The original point *p* is not modified.
+    原始点 *p* 不会被修改。
     """
     return Point(p.x + dx, p.y + dy)
 
 
 def rotate_point(p: Point, angle: float, center: Point | None = None) -> Point:
-    """Return a new point rotated by *angle* radians around *center*.
+    """返回绕 *center* 旋转 *angle* 弧度后的新点。
 
-    If *center* is ``None``, rotation is around the origin ``(0, 0)``.
-    Positive angles represent counter-clockwise rotation.
+    若 *center* 为 ``None``，则绕原点 ``(0, 0)`` 旋转。
+    正角度表示逆时针旋转。
     """
     cx, cy = (center.x, center.y) if center else (0.0, 0.0)
     dx, dy = p.x - cx, p.y - cy
@@ -55,11 +55,10 @@ def rotate_point(p: Point, angle: float, center: Point | None = None) -> Point:
 
 
 def scale_point(p: Point, factor: float, center: Point | None = None) -> Point:
-    """Return a new point scaled by *factor* relative to *center*.
+    """返回相对于 *center* 缩放 *factor* 倍后的新点。
 
-    If *center* is ``None``, scaling is relative to the origin ``(0, 0)``.
-    A factor greater than 1 enlarges the distance from the center;
-    a factor between 0 and 1 shrinks it.
+    若 *center* 为 ``None``，则相对于原点 ``(0, 0)`` 缩放。
+    缩放因子大于 1 时远离中心，0 到 1 之间时靠近中心。
     """
     cx, cy = (center.x, center.y) if center else (0.0, 0.0)
     return Point(cx + (p.x - cx) * factor, cy + (p.y - cy) * factor)
